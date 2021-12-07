@@ -11,7 +11,7 @@ The build of the project is done via CMake.
 
 ### Development environment
 * Visual Studio or<br/>
-* Clion verwendet.<br/>
+* Clion<br/>
   <br/>
 ## Installation
 
