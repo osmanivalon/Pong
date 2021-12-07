@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.15)
 
 project(Games)
 
+file(MAKE_DIRECTORY "bin")
 
 add_subdirectory(src)
 
