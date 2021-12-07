@@ -1,0 +1,7 @@
+!build-linux/build.sh
+build-linux/*
+!build-windows/build.bat
+build-windows/*
+cmake-build-debug
+bin/*
+.idea/

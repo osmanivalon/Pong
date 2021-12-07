@@ -1,27 +1,30 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.15)
 
-project(CyberPong)
+project(Games)
 
-FILE(GLOB INCLUDE
-        "include/*.cpp")
-FILE(GLOB SRC
-        "*.cpp"
-        "src/*.cpp")
-FILE(GLOB BIN_DIR
-        "../bin")
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR})
+add_subdirectory(src)
 
-set(CMAKE_MODULE_PATH
-        "${CMAKE_SOURCE_DIR}/cmake_modules"
-        ${CMAKE_MODULE_PATH})
+# FILE(GLOB SRC
+#        "Snake.cpp")
 
-find_package(SFML REQUIRED system window graphics)
+#FILE(GLOB BIN_DIR
+#        "bin")
 
-include_directories(${SFML_INCLUDE_DIR})
+# set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR})
+# set(CMAKE_MODULE_PATH
+#         "${CMAKE_SOURCE_DIR}/cmake_modules"
+#         ${CMAKE_MODULE_PATH})
 
-add_executable(${PROJECT_NAME} ${SRC} ${INCLUDE})
+# find_package(SFML REQUIRED system window graphics)
 
-target_link_libraries(${PROJECT_NAME} ${SFML_LIBRARIES} ${SFML_DEPENDENC})
 
-set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "cpong" RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR})
+# include_directories(${SFML_INCLUDE_DIR})
+
+
+
+# add_executable(${PROJECT_NAME} ${SRC})
+
+# target_link_libraries(${PROJECT_NAME} ${SFML_LIBRARIES} ${SFML_DEPENDENC})
+
+# set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "teris" RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR})
