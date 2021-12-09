@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.15)
 
 # Project name
 project(CyberPong)
@@ -14,7 +14,7 @@ FILE(GLOB BIN_DIR
         "../bin")
 
 # Make bin dir as output directory
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR})
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${BIN_DIR})
 
 set(CMAKE_MODULE_PATH
         "${CMAKE_SOURCE_DIR}/cmake_modules"

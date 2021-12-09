@@ -8,11 +8,11 @@ echo                  Build Preparation
 echo =============================================================
 
 
-cmake -DCMAKE_TOOLCHAIN_FILE=C:\views\vcpkg\scripts\buildsystems\vcpkg.cmake ..
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=C:\views\vcpkg\scripts\buildsystems\vcpkg.cmake ..
 
 color A
 echo 
 echo =============================================================
 echo                     Generations
 echo =============================================================
-cmake --build .
+cmake --build . --config Release

@@ -6,7 +6,10 @@
 #define GAMES_GAME_H
 
 #include <iostream>
+#include <memory>
 #include <SFML/Graphics.hpp>
+#include "Gamestate.h"
+#include "MainMenuState.h"
 
 class Game
 {
@@ -14,10 +17,12 @@ public:
     Game();
 
     void run();
-    void init();
-    bool  isRunning();
+    bool  isRunning() const;
 
-    bool running;
+    bool running{};
     sf::RenderWindow window;
+
+private:
+    std::unique_ptr<Gamestate> CurrentState;
 };
 #endif //GAMES_GAME_H

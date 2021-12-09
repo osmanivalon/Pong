@@ -3,16 +3,14 @@
 //
 
 #include <iostream>
-#include <SFML/Graphics.hpp>
 #include "include/Game.h"
 
 int main(int argc, char* argv[])
 {
-    Game cyberpong;
-    cyberpong.init();
+    Game game;
 
-    while(cyberpong.isRunning()){
-        cyberpong.run();
+    while(game.isRunning()){
+        game.run();
     }
 
     // TODO

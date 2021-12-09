@@ -12,14 +12,11 @@ using namespace std;
 Game::Game()
 {
     window.create(sf::VideoMode(1280, 720), "CyberPong");
+    running =  true;
+
+    CurrentState = std::move(std::unique_ptr<MainMenuState>(new MainMenuState));
 }
 
-/*****************************************************
- *    Init methode
- * ***************************************************/
-void Game::init() {
-    running =  true;
-}
 
 /*****************************************************
  *    Methode to run the Game
@@ -27,17 +24,12 @@ void Game::init() {
  void Game::run() {
     while (window.isOpen())
     {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-            {
-                window.close();
-                running = false;
-            }
-        }
-        window.clear();
-        //window.draw(shape);
+        CurrentState->HandleEvents(*this);
+        window.clear(sf::Color(0,134,194));
+
+        CurrentState->Update(*this);
+        CurrentState->Draw(*this);
+
         window.display();
     }
  }
@@ -45,6 +37,6 @@ void Game::init() {
 /*****************************************************
 *    Check if Game is running
 * ***************************************************/
-bool Game::isRunning() {
+bool Game::isRunning() const {
     return running;
 }
