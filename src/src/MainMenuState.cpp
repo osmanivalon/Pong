@@ -6,14 +6,13 @@
 
 MainMenuState::MainMenuState() {
     font.loadFromFile("../assets/fnt/BRLNSR.TTF");
-    font_e.loadFromFile("../assets/fnt/blurb.ttf");
 
     txtStartGame.setFont(font);
     txtStartGame.setString("Start Game");
     txtStartGame.setCharacterSize(30);
     txtStartGame.setPosition(400.f, 500.f);
 
-    txtQuitGame.setFont(font_e);
+    txtQuitGame.setFont(font);
     txtQuitGame.setString("Quit Game");
     txtQuitGame.setCharacterSize(30);
     txtQuitGame.setPosition(600.f, 500.f);
@@ -27,6 +26,23 @@ void MainMenuState::HandleEvents(Game &game) {
         if (event.type == sf::Event::Closed){
             game.window.close();
             game.running = false;
+        }
+
+        if (event.type == sf::Event::MouseButtonReleased){
+            if (event.mouseButton.button == 0){
+                if (txtStartGame.getGlobalBounds().contains(
+                        sf::Mouse::getPosition(game.window).x,
+                        sf::Mouse::getPosition(game.window).y))
+                {
+                    game.changeState(Game::gameState::PLAY);
+                } else if (txtQuitGame.getGlobalBounds().contains(
+                        sf::Mouse::getPosition(game.window).x,
+                        sf::Mouse::getPosition(game.window).y))
+                {
+                    game.window.close();
+                    game.running = false;
+                }
+            }
         }
     }
 }
@@ -47,6 +63,21 @@ void MainMenuState::Update(Game &game) {
         txtStartGame.setColor(sf::Color::White);
         bStartGameSelected = false;
     }
+
+    if (txtQuitGame.getGlobalBounds().contains(
+            sf::Mouse::getPosition(game.window).x,
+            sf::Mouse::getPosition(game.window).y) &&
+            txtQuitGame.getColor() != sf::Color::Green)
+    {
+        txtQuitGame.setColor(sf::Color::Green);
+        bStartGameSelected = true;
+    }else if (!txtQuitGame.getGlobalBounds().contains(
+            sf::Mouse::getPosition(game.window).x,
+            sf::Mouse::getPosition(game.window).y) &&
+            txtQuitGame.getColor() == sf::Color::Green){
+        txtQuitGame.setColor(sf::Color::White);
+        bQuitGameSelected = false;
+    }
 }
 
 void MainMenuState::Draw(Game &game) {
@@ -55,5 +86,5 @@ void MainMenuState::Draw(Game &game) {
 }
 
 MainMenuState::~MainMenuState() noexcept {
-    std::cout << "MainMenuState Destruktor is calling" << std::endl;
+    std::cout << "MainMenuState -> destroyed" << std::endl;
 }

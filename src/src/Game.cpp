@@ -11,10 +11,10 @@ using namespace std;
  * ***************************************************/
 Game::Game()
 {
+    // Main/Base/First window of game
     window.create(sf::VideoMode(1280, 720), "CyberPong");
     running =  true;
 
-    CurrentState = std::move(std::unique_ptr<MainMenuState>(new MainMenuState));
 }
 
 
@@ -24,6 +24,10 @@ Game::Game()
  void Game::run() {
     while (window.isOpen())
     {
+        now = clock.getElapsedTime();
+        frameDeltaTime = (now - then);
+        then = now;
+
         CurrentState->HandleEvents(*this);
         window.clear(sf::Color(0,134,194));
 
@@ -39,4 +43,17 @@ Game::Game()
 * ***************************************************/
 bool Game::isRunning() const {
     return running;
+}
+
+void Game::changeState(Game::gameState newState) {
+    switch (newState) {
+        case gameState::MAINMENU:
+            CurrentState = move(std::unique_ptr<MainMenuState>(new MainMenuState));
+            break;
+        case gameState::PLAY:
+            CurrentState = move(std::unique_ptr<Playstate>(new Playstate));
+            break;
+        default:
+            break;
+    }
 }

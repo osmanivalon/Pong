@@ -10,17 +10,24 @@
 #include <SFML/Graphics.hpp>
 #include "Gamestate.h"
 #include "MainMenuState.h"
+#include "Playstate.h"
 
 class Game
 {
 public:
     Game();
 
+    enum class gameState {MAINMENU, PLAY};
     void run();
-    bool  isRunning() const;
-
+    bool isRunning() const;
+    void changeState(gameState newstate);
     bool running{};
     sf::RenderWindow window;
+
+    sf::Clock clock;
+    sf::Time then = clock.getElapsedTime();
+    sf::Time now;
+    sf::Time frameDeltaTime;
 
 private:
     std::unique_ptr<Gamestate> CurrentState;

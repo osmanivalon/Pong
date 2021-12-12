@@ -21,7 +21,6 @@ private:
     bool bQuitGameSelected;
 
     sf::Font font;
-    sf::Font font_e;
     sf::Text txtStartGame;
     sf::Text txtQuitGame;
 };

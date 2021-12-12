@@ -5,7 +5,7 @@
 #ifndef GAMES_GAMESTATE_H
 #define GAMES_GAMESTATE_H
 
-class Game; // Vorwärtsdeklaration -damit diese classe hier bekannt ist
+class Game; // Vorwärtsdeklaration - damit diese classe hier bekannt ist
 
 class Gamestate
 {

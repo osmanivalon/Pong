@@ -7,10 +7,11 @@
 
 int main(int argc, char* argv[])
 {
-    Game game;
+    Game pingpong;
+    pingpong.changeState(Game::gameState::MAINMENU);
 
-    while(game.isRunning()){
-        game.run();
+    while(pingpong.isRunning()){
+        pingpong.run();
     }
 
     // TODO
